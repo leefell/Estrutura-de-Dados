@@ -51,8 +51,7 @@ void classeLanche::lerCodigo(){
         else if(num == 105)
             total = total + 1.00 * quantidade;
         else
-            cout << "Opcao Invalida.";
-        cout << endl;
+            cout << "Opcao Invalida." << endl;
         
     }
     cout << "Total: " << total << endl;
