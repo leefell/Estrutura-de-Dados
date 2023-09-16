@@ -50,7 +50,6 @@ void classeLanche::lerCodigo(){
             total = total + 1.30 * quantidade;
         else if(num == 105)
             total = total + 1.00 * quantidade;
-        else if(num == -1);
         else
             cout << "Opcao Invalida, Digite novamente: ";
         cout << endl;
