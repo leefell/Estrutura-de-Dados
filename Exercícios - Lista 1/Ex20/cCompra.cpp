@@ -14,7 +14,7 @@ cCompra::~cCompra() {
 
 void cCompra::lerProdutos(){
     
-    int opc = -1; // Inicialize opc com um valor válido
+    int opc = -1; // trocar se der errado
     double total = 0;
     
     while (opc != 0) {
