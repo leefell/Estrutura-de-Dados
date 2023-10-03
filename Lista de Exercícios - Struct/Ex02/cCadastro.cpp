@@ -57,8 +57,6 @@ void cCadastro::pesquisaSequencial(int qtd, sPessoa *vetorPessoa) {
             cout << "O IMC do " << vetorPessoa[i].nome << " e: " 
                     << setprecision(2) << this->imc(vetorPessoa[i].altura, vetorPessoa[i].peso) << endl;
             return;
-        }else{
-            cout << "CPF nao encontrado!" << endl;
         }
     } 
 }
