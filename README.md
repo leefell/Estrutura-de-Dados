@@ -8,4 +8,6 @@ Armazenar arquivos da disciplina de Estrutura de Dados I em c++.
 - [Revisão geral 1º sem.](https://github.com/leefell/Estrutura-de-Dados-I/tree/main/Lista%20de%20Exerc%C3%ADcios%20-%20Revis%C3%A3o)
 - [Struct](https://github.com/leefell/Estrutura-de-Dados-I/tree/main/Lista%20de%20Exerc%C3%ADcios%20-%20Struct)
 
-- # Estrutura de Dados
+# Estrutura de Dados
+
+- [Ponteiro](https://github.com/leefell/Estrutura-de-Dados-I/tree/main/Ponteiro)
