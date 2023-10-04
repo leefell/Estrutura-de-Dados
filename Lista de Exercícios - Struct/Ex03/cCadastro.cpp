@@ -1,9 +1,8 @@
 #include <iostream>
-#include "cCadastro.h"
 #include <cmath>
-#include <string>
+#include <iomanip>
+#include "cCadastro.h"
 using namespace std;
-
 cCadastro::cCadastro() {
 }
 
@@ -16,77 +15,75 @@ cCadastro::~cCadastro() {
 void cCadastro::qtdPessoas(){
     
     int qtd;
-    cout << "Digite quantas pessoas serao cadastradas: ";
+    cout << "Digite a quantidade de cadastros: ";
     cin >> qtd;
     
-    this->insert(qtd);
+    this->cadastrar(qtd);
+    
 }
 
-void cCadastro::insert(int qtd){
+void cCadastro::cadastrar(int qtd){
     
     sPessoa vetor[qtd];
+    
     for(int i = 0; i < qtd; i++){
-        cout << "Digite o nome: ";
+        cout << "\n Cadastrando a pessoa " << i + 1 << endl;
+        cout << "\nNome: ";
         cin >> vetor[i].nome;
-        cout << "Digite o CPF: ";
+        cout << "CPF: ";
         cin >> vetor[i].cpf;
-        cout << "Digite a altura: ";
+        cout << "Altura: ";
         cin >> vetor[i].altura;
-        cout << "Digite o peso: ";
+        cout << "Peso: ";
         cin >> vetor[i].peso;
-        cout << "Digite o sexo [M]/[F]: ";
-        cin >> vetor[i].sexo;
-        cout << endl;
-    }
+    } 
     
     this->escolherPesquisa(qtd, vetor);
     
 }
 
 void cCadastro::bubbleSort(int qtd, sPessoa *vetor){
-    sPessoa temp;
+    
+    sPessoa temporario;
     for(int i = qtd - 1; i >= 1; i--){
         for(int j = 0; j < 1; j++){
-            if(vetor[j].cpf > vetor[j + 1].cpf){
-                temp = vetor[j];
+            if(vetor[i].cpf > vetor[j + 1].cpf){
+                temporario = vetor[j];
                 vetor[j] = vetor[j + 1];
-                vetor[j + 1] = temp;
+                vetor[j + 1] = temporario;
             }
         }
     }  
 }
 
-void cCadastro::pesquisaBinaria(int qtd, sPessoa *vetor, int chave){
+void cCadastro::pesquisaSequencial(int qtd, sPessoa *vetor, int indice){
+    
+    for(int i = 0; i < qtd; i++){
+        if(indice == vetor[i].cpf){
+            cout << "O IMC do " << vetor[i].nome << " e " << setprecision(2) << this->imc(vetor[i].altura, vetor[i].peso) << endl;
+            return;
+        }
+    }    
+}
+
+void cCadastro::pesquisaBinaria(int qtd, sPessoa *vetor, int indice){
     
     int inf, sup, meio;
     inf = 0;
     sup = qtd - 1;
+    
     while(inf <= sup){
         meio = (inf + sup)/2;
-        if(chave == vetor[meio].cpf){
-            cout << "Nome: " << vetor[meio].nome << endl;
-            cout << "IMC: " << this->imc(vetor[meio].altura, vetor[meio].peso) << endl;
+        if(indice == vetor[meio].cpf){
+            cout << "O IMC do " << vetor[i].nome << " e " << setprecision(2) << this->imc(vetor[i].altura, vetor[i].peso) << endl;
             return;
-        }else if(chave < vetor[meio].cpf){
+        }else if(indice < vetor[meio].cpf){
             sup = meio - 1;
         }else{
             inf = meio + 1;
         }
     }
-    cout << "CPF nao encontrado!" << endl;
-}
-
-void cCadastro::pesquisaSequencial(int qtd, sPessoa *vetor, int chave){
-    
-    for(int i = 0; i < qtd; i++){
-        if(chave == vetor[i].cpf){
-            cout << "Nome: " << vetor[i].nome << endl;
-            cout << "IMC: " << this->imc(vetor[i].altura, vetor[i].peso) << endl;
-            return;
-        }else{
-            cout << "CPF nao encontrado!" << endl;
-        }
-    }
+    cout << "CPF nao encontrado. " << endl;
 }
 
 float cCadastro::imc(float a, float p){
@@ -98,21 +95,22 @@ float cCadastro::imc(float a, float p){
 void cCadastro::escolherPesquisa(int qtd, sPessoa *vetor){
     
     char escolha;
-    int pesquisarCPF;
+    int pesquisaCPF;
     
-    cout << "Digite o CPF a ser pesquisado:";
-    cin >> pesquisarCPF;
+    cout << "\nDigite o CPF para pesquisa: ";
+    cin >> pesquisaCPF;
     cout << "\nEscolha a opcao de Pesquisa: " << endl;
     cout << "[S] - Pesquisa Sequencial" << endl;
     cout << "[B] - Pesquisa Binaria" << endl;
     cin >> escolha;
     
     if(escolha == 'S' || escolha == 's'){
-        this->pesquisaSequencial(qtd, vetor, pesquisarCPF);
+        this->pesquisaSequencial(qtd, vetor, pesquisaCPF);
     }else if(escolha == 'B' || escolha == 'b'){
         this->bubbleSort(qtd, vetor);
-        this->pesquisaBinaria(qtd, vetor, pesquisarCPF);
+        this->pesquisaBinaria(qtd, vetor, pesquisaCPF);
     }else{
-        cout << "Opcao Invalida!" << endl;
+        cout << "Opcao Invalida ze." << endl;
     }
+    
 }
