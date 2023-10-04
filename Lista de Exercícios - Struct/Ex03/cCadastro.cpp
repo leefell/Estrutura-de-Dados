@@ -75,7 +75,7 @@ void cCadastro::pesquisaBinaria(int qtd, sPessoa *vetor, int indice){
     while(inf <= sup){
         meio = (inf + sup)/2;
         if(indice == vetor[meio].cpf){
-            cout << "O IMC do " << vetor[i].nome << " e " << setprecision(2) << this->imc(vetor[i].altura, vetor[i].peso) << endl;
+            cout << "O IMC do " << vetor[meio].nome << " e " << setprecision(2) << this->imc(vetor[meio].altura, vetor[meio].peso) << endl;
             return;
         }else if(indice < vetor[meio].cpf){
             sup = meio - 1;
