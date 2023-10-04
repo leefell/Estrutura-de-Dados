@@ -1,16 +1,15 @@
+#include <iostream>
+using namespace std;
 #ifndef CCADASTRO_H
 #define CCADASTRO_H
-#include <string>
-using namespace std;
+
 class cCadastro {
 public:
     
     struct sPessoa{
         string nome;
         int cpf;
-        float altura;
-        float peso;
-        char sexo;
+        float altura, peso;
     };
     
     cCadastro();
@@ -18,12 +17,13 @@ public:
     virtual ~cCadastro();
     
     void qtdPessoas();
-    void insert(int qtd);
+    void cadastrar(int qtd);
     void bubbleSort(int qtd, sPessoa *vetor);
-    void pesquisaBinaria(int qtd, sPessoa *vetor, int chave);
-    void pesquisaSequencial(int qtd, sPessoa *vetor, int chave);
-    float imc(float a, float p);
+    void pesquisaBinaria(int qtd, sPessoa *vetor, int indice);
+    float imc(float a, float b);
+    void pesquisaSequencial(int qtd, sPessoa *vetor, int indice);
     void escolherPesquisa(int qtd, sPessoa *vetor);
+    void mostrar(int qtd, sPessoa *vetor);
     
 private:
 
