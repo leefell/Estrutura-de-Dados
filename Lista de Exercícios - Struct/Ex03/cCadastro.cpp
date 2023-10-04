@@ -108,7 +108,6 @@ void cCadastro::escolherPesquisa(int qtd, sPessoa *vetor){
     cin >> escolha;
     
     if(escolha == 'S' || escolha == 's'){
-        this->bubbleSort(qtd, vetor);
         this->pesquisaSequencial(qtd, vetor, pesquisarCPF);
     }else if(escolha == 'B' || escolha == 'b'){
         this->bubbleSort(qtd, vetor);
