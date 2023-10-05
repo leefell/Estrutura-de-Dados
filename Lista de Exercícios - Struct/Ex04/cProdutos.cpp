@@ -1,9 +1,6 @@
 #include <iostream>
 #include "cProdutos.h"
-#include <string>
-
 using namespace std;
-
 cProdutos::cProdutos() {
 }
 
@@ -16,71 +13,74 @@ cProdutos::~cProdutos() {
 void cProdutos::qtdProdutos(){
     
     int qtd;
-    cout << "Insira quantos produtos serao cadastrados: ";
+    cout << "Digite a quantidade de cadastros: ";
     cin >> qtd;
-   
-    this->insert(qtd);
+    
+    this->cadastrar(qtd);
+    
 }
 
-void cProdutos::insert(int qtd){
+void cProdutos::cadastrar(int qtd){
     
     sProdutos vetor[qtd];
+    
     for(int i = 0; i < qtd; i++){
-        cout << "Insira o nome do produto: ";
-        cin >> vetor[i].nome;
-        cout << "Insira o codigo do produto: ";
-        cin >> vetor[i].codigo;
-        cout << "Insira o Valor do produto em R$: ";
-        cin >> vetor[i].preco;
-        cout << endl;
-    }
+    cout << "\nCadastrando um novo produto." << endl;    
+    cout << "Nome: ";
+    cin >> vetor[i].nome;
+    cout << "Codigo: ";
+    cin >> vetor[i].codigo;
+    cout << "Preco R$: ";
+    cin >> vetor[i].preco;
     
-    this->imprimir(qtd, vetor);
-    
-    int codigoPesquisa;
-    cout << "\nInforme o código do produto para ver o preco: ";
-    cin >> codigoPesquisa;
-    
-    this->pesquisaBinaria(qtd, vetor, codigoPesquisa);
+  }
+   
+    this->consulta(qtd, vetor);
     
 }
 
-void cProdutos::imprimir(int qtd, sProdutos *vetor){
-    cout << "Produto ---------------------- Codigo" << endl;
-    for(int i = 0; i < qtd; i++){
-        cout << vetor[i].nome << " ---------------------- " << vetor[i].codigo << endl;
-    }   
-}
-
-void cProdutos::bubbleSort(int qtd, sProdutos *vetor){
+void cProdutos::sort(int qtd, sProdutos *vetor){
     
-    sProdutos temp;
+    sProdutos temporaria;
     for(int i = qtd - 1; i >= 1; i--){
-        for(int j = 0; j < i; j++){
-            if(vetor[i].codigo > vetor[i].codigo){
-                temp = vetor[j];
+        for(int j = 0; j < 1; j++){
+            if(vetor[i].codigo > vetor[j+1].codigo){
+                temporaria = vetor[j];
                 vetor[j] = vetor[j + 1];
-                vetor[j + 1] = temp;
+                vetor[j+1] = temporaria;
             }
         }
     }
 }
 
-void cProdutos::pesquisaBinaria(int qtd, sProdutos *vetor, int chave){
-    this->bubbleSort(qtd, vetor);
+void cProdutos::pesquisaBinaria(int qtd, sProdutos* vetor, int indice){
     
     int inf, sup, meio;
     inf = 0;
     sup = qtd - 1;
+    
     while(inf <= sup){
         meio = (inf + sup)/2;
-        if(chave == vetor[meio].codigo){
-            cout << vetor[meio].nome << " - R$" << vetor[meio].preco << endl;
+        if(indice == vetor[meio].codigo){
+            cout << "Produto: " << vetor[meio].nome << "\nPreco: " << vetor[meio].preco << endl;
             return;
-        }else if(chave < vetor[meio].codigo){
+        }else if(indice < vetor[meio].codigo){
             sup = meio - 1;
         }else{
             inf = meio + 1;
         }
     }
+    cout << "Codigo nao encontrado. " << endl;
+}
+
+void cProdutos::consulta(int qtd, sProdutos *vetor){
+    
+    int codigoPesq;
+    
+    cout << "\nDigite o codigo do produto a ser consultado o preco: ";
+    cin >> codigoPesq;
+    
+    this->sort(qtd, vetor);
+    this->pesquisaBinaria(qtd, vetor, codigoPesq);
+    
 }
