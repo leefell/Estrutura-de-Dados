@@ -1,8 +1,6 @@
 #include <iostream>
 #include "cCadastro.h"
-
 using namespace std;
-
 cCadastro::cCadastro() {
 }
 
@@ -12,51 +10,45 @@ cCadastro::cCadastro(const cCadastro& orig) {
 cCadastro::~cCadastro() {
 }
 
-int cCadastro::cadastroAlunos(){
+void cCadastro::qtdAlunos(){
     
     int qtd;
-    cout << "Digite a quantidade de alunos a serem cadastrados: ";
+    cout << "Digite a quantidade de cadastros: ";
     cin >> qtd;
     
-    this->preencher(qtd);
+    this->cadastrar(qtd);
 }
 
-void cCadastro::preencher(int qtd){
+void cCadastro::cadastrar(int qtd){
     
-    sAluno vetorAlunos[qtd];
+    sAluno vetor[qtd];
     
     for(int i = 0; i < qtd; i++){
-        cout << "Digite o nome do aluno: ";
-        cin >> vetorAlunos[i].nome;
-        cout << "Digite a matricula do aluno: ";
-        cin >> vetorAlunos[i].matricula;
-        cout << "Digite a primeira nota desse aluno: ";
-        cin >> vetorAlunos[i].n1;
-        cout << "Digite a segunda nota desse aluno: ";
-        cin >> vetorAlunos[i].n2;
-        cout << endl;
-        
+    cout << "\nCadastrando novo aluno." << endl;
+    cout << "Nome: ";
+    cin >> vetor[i].nome;
+    cout << "Matricula: ";
+    cin >> vetor[i].matricula;
+    cout << "Nota 1: ";
+    cin >> vetor[i].n1;
+    cout << "Nota 2: ";
+    cin >> vetor[i].n2;   
     }
     
-    this->mostrar(qtd, vetorAlunos);
+    this->imprimir(qtd, vetor);
     
 }
 
-void cCadastro::mostrar(int qtd, sAluno *vetorAlunos){
+float cCadastro::media(float a, float b){
     
-    for(int j = 0; j < qtd; j++){
-        cout << "Nome: " << vetorAlunos[j].nome << endl;
-        cout << "Matricula: " << vetorAlunos[j].matricula << endl;
-        cout << "Nota 1: " << vetorAlunos[j].n1 << endl;
-        cout << "Nota 2: " << vetorAlunos[j].n2 << endl;
-        cout << "A media do aluno e: " << this->media(vetorAlunos[j].n1, vetorAlunos[j].n2) << endl;
-        cout << endl;
-    }
+    return (a+b)/2;
     
 }
 
-float cCadastro::media(float n1, float n2){
+void cCadastro::imprimir(int qtd, sAluno *vetor){
     
-    return (n1+n2)/2;
-    
+    for(int i = 0; i < qtd; i++){
+    cout << "\nNome: " << vetor[i].nome << endl;
+    cout << "Media: " << this->media(vetor[i].n1, vetor[i].n2) << endl;
+    }    
 }
