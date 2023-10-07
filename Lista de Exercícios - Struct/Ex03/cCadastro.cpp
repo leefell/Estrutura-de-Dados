@@ -110,7 +110,7 @@ void cCadastro::escolherPesquisa(int qtd, sPessoa *vetor){
         this->bubbleSort(qtd, vetor);
         this->pesquisaBinaria(qtd, vetor, pesquisaCPF);
     }else{
-        cout << "Opcao Invalida ze." << endl;
+        cout << "Opcao Invalida." << endl;
     }
     
 }
