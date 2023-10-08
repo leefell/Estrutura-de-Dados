@@ -26,12 +26,14 @@ void cMedia::insert(){
     cout << "Digite [A] - Media Aritmetica" << endl;
     cout << "Digite [P] - Media Ponderada (5,3,2)" << endl;
     cin >> opc;
-    if(opc == 'A' || opc == 'a')
+    if(opc == tolower('A'))
         cout << "\nO resultado da media aritmetica das notas e: " 
                 << setprecision(2) << this->aritmetica(n1,n2,n3) << endl;
-    else if(opc == 'P' || opc == 'p')
+    else if(opc == tolower('P'))
         cout << "\nO resultado da media ponderada das notas e: " 
-                << setprecision(2) << this->ponderada(n1,n2,n3) << endl; 
+                << setprecision(2) << this->ponderada(n1,n2,n3) << endl;
+    else
+        cout << "Opcao Invalida! " << endl;
     
     
 }
