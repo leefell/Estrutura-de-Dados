@@ -1,3 +1,7 @@
+
+// Work in progress (WIP)
+// Ainda não esta completo
+
 #include "fila.h"
 #include <iostream>
 using namespace std;
