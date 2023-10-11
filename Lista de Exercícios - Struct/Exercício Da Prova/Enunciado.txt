@@ -1,0 +1,3 @@
+Implemente um método que cadastre a altura, o peso, o cpf
+e o nome de 10 pessoas. Implemente outro metodo para pesquisar uma pessoa
+por meio do seu CPF e imprima seu IMC.
