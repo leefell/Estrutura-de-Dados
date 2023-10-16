@@ -77,6 +77,6 @@ int Cadastro::pesquisaBinaria(int qtd, sPessoa *array, string indice){
 
 float Cadastro::imc(float p, float a){
     
-    return (p)/a*a;
+    return p/(a*a);
     
 }
