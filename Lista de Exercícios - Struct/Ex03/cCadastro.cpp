@@ -103,10 +103,11 @@ void cCadastro::escolherPesquisa(int qtd, sPessoa *vetor){
     cout << "[S] - Pesquisa Sequencial" << endl;
     cout << "[B] - Pesquisa Binaria" << endl;
     cin >> escolha;
-    
-    if(escolha == 'S' || escolha == 's'){
+
+    escolha = tolower(escolha);
+    if(escolha == 's'){
         this->pesquisaSequencial(qtd, vetor, pesquisaCPF);
-    }else if(escolha == 'B' || escolha == 'b'){
+    }else if(escolha == 'b'){
         this->bubbleSort(qtd, vetor);
         this->pesquisaBinaria(qtd, vetor, pesquisaCPF);
     }else{
