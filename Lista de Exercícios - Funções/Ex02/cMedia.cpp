@@ -49,3 +49,15 @@ float cMedia::ponderada(float n1, float n2, float n3){
     return ((n1*5) + (n2*3) + (n3*2))/10;
     
 }
+
+
+// OR
+//float cMedia::calcular(float a, float b, float c, char opc){
+    
+ //   if(opc == 'a')
+//        return (a+b+c)/3;
+//    else if(opc == 'p')
+//        return ((a*5) + (b*3) + (c*2)) / 10;
+//else
+//cout << "\nOpcao Invalida." << endl;
+//}
