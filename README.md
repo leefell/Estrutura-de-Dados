@@ -11,3 +11,4 @@ Armazenar arquivos da disciplina de Estrutura de Dados I em c++.
 # Estrutura de Dados
 
 - [Ponteiro](https://github.com/leefell/Estrutura-de-Dados-I/tree/main/Ponteiro)
+- [Lista Encadeada](https://github.com/leefell/Estrutura-de-Dados-I/tree/main/Ponteiro/ListaEncadeada)
