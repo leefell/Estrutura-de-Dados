@@ -15,7 +15,7 @@ public:
     no *inicio, *fim, *aux;
     //o aux armazena temporariamente o ultimo endereço criado
     //malloc = o new() em java, criando um novo espaço na memoria
-    //a funcao malloc reserva um espaço na memoria e retorna um endereço
+    //a funcao malloc retorna um endereco que é armazenado no aux e malloc é um ponteiro
     
     fila();
     fila(const fila& orig);
@@ -26,6 +26,7 @@ public:
     void removerValor();
     void inserirValor();
     void menu();
+    bool vazio(struct no *structRecebido);
     
 private:
 

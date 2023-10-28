@@ -1,7 +1,3 @@
-
-// Work in progress (WIP)
-// Ainda não esta completo
-
 #include "fila.h"
 #include <iostream>
 using namespace std;
@@ -18,6 +14,7 @@ fila::fila(const fila& orig) {
 
 fila::~fila() {
 }
+
 
 
 void fila::menu(){
@@ -39,13 +36,16 @@ void fila::menu(){
             this->menu();
             break;
         case 2:
-            this->removerValor();
+            this->removerValor();            
+            this->menu();
             break;
         case 3:
             this->mostrarValores();
+            this->menu();
             break;
         case 4:
             this->pesquisarValor();
+            this->menu();
             break;
         case 0:
             cout << "\nSaindo." << endl;
@@ -76,11 +76,25 @@ void fila::inserirValor(){
     
 }
 
+
+bool fila::vazio(struct no *structRecebido) {
+
+    if (structRecebido == NULL)
+        return false;
+    else
+        return true;
+}
+
+                                            
 void fila::removerValor(){
     
-    cout << "Digite o valor a ser removido: ";
-    
-    
+    if(vazio(this->inicio)){
+        this->aux = this->inicio;
+        this->inicio = this->inicio->prox;
+        free(this->aux);  // sem o free, o espaço da memória não será desalocado
+        cout << "Removido com sucesso.\n";
+        
+    }  
 }
 
 void fila::mostrarValores(){
@@ -94,4 +108,16 @@ void fila::mostrarValores(){
 
 void fila::pesquisarValor(){
     
+    int chave, contador=0;
+    
+    cout << "\nDigite um numero para verificar se esta na fila: ";
+    cin >> chave;
+    
+    contador++;
+    
+    for(this->aux = this->inicio; this->aux != NULL; this->aux = this->aux->prox){
+        if(chave == this->aux->valor){
+            cout << "Número encontrado na fila. \nIteração: " << contador << endl;
+        }
+    }  
 }
