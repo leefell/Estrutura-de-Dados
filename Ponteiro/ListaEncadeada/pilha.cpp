@@ -16,7 +16,9 @@ pilha::~pilha() {
 }
 
 void pilha::menu() {
-
+    
+    // Tudo implementado
+    
     int opc;
     cout << "\n=========== MENU =========== " << endl;
     cout << "[1] - Inserir valor à pilha " << endl;
