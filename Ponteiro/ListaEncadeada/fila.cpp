@@ -108,16 +108,14 @@ void fila::mostrarValores(){
 
 void fila::pesquisarValor(){
     
-    int chave, contador=0;
+    int chave;
     
     cout << "\nDigite um numero para verificar se esta na fila: ";
     cin >> chave;
     
-    contador++;
-    
     for(this->aux = this->inicio; this->aux != NULL; this->aux = this->aux->prox){
         if(chave == this->aux->valor){
-            cout << "Número encontrado na fila. \nIteração: " << contador << endl;
+            cout << "Número encontrado na fila." << endl;
         }
     }  
 }
