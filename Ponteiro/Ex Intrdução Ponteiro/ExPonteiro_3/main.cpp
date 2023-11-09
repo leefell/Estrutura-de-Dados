@@ -1,4 +1,4 @@
-#include "cPonteiro.h"
+#include "media.h"
 #include <cstdlib>
 
 using namespace std;
@@ -8,8 +8,8 @@ using namespace std;
  */
 int main(int argc, char** argv) {
 
-    cPonteiro obj;
-    obj.insert();
+    media obj;
+    obj.lerNotas();
     
     return 0;
 }
