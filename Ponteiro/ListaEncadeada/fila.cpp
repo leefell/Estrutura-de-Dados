@@ -64,6 +64,7 @@ void fila::inserirValor(){
     this->aux = (struct no*)malloc(sizeof(aux)); // essa é a estrutura do malloc
     cin >> this->aux->valor;
 
+    // malloc reserva um espaço na memoria
     // Na primeira inserção o malloc sempre entra no if, pq o inicio é vazio
     // o segundo elemento ja nao entra no if pq o inicio nao vai ser null
     if(this->inicio == NULL){
