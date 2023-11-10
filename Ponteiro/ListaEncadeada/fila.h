@@ -2,15 +2,16 @@
 #ifndef FILA_H
 #define FILA_H
 
-class fila {
-public:
-       
-    struct no{
+struct no{
         
         int valor;
         struct no *prox;
         
     };
+
+class fila {
+public:
+
     
     no *inicio, *fim, *aux;
     //o aux armazena temporariamente o ultimo endereço criado
