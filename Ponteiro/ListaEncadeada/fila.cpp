@@ -106,7 +106,6 @@ void fila::mostrarValores(){
     for(this->aux = this->inicio; this->aux != NULL; this->aux = this->aux->prox){
         cout << this->aux->valor << endl;
     }
-    
 }
 
 void fila::pesquisarValor(){
