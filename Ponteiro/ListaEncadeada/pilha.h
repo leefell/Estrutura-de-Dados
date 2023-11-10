@@ -1,6 +1,11 @@
 #ifndef PILHA_H
 #define PILHA_H
 
+//struct no{
+//        int valor;
+//        struct no *ant;
+//    };
+//
 class pilha {
 public:
     
