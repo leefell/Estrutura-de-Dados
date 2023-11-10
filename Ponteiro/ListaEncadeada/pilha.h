@@ -1,11 +1,12 @@
 #ifndef PILHA_H
 #define PILHA_H
 
+// Forma adequada: 
 //struct no{
 //        int valor;
 //        struct no *ant;
 //    };
-//
+// se declarado dentro da classe, na hora de retornar ponteiro, ela vai dar erro
 class pilha {
 public:
     
