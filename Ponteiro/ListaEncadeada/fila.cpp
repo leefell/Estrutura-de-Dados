@@ -93,6 +93,7 @@ void fila::removerValor(){
     if(vazio(this->inicio)){
         this->aux = this->inicio;
         this->inicio = this->inicio->prox;
+       // this->inicio = this->aux->prox;
         free(this->aux);  // sem o free, o espaço da memória não será desalocado
         cout << "Removido com sucesso.\n";
         
