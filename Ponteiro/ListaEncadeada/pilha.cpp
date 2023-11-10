@@ -90,7 +90,12 @@ void pilha::mostrarValores() {
     }
     
     cout << p->valor << endl;
-}
+
+    //testar em casa
+    //while(aux!=NULL){
+    //cout << aux -> valor;
+    //aux = aut -> ant;
+    //}
 
 void pilha::pesquisarValor(){
     int chave, contador = 0;
