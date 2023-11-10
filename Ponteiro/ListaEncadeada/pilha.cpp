@@ -98,7 +98,7 @@ void pilha::mostrarValores() {
     //}
 
 void pilha::pesquisarValor(){
-    int chave, contador = 0;
+    int chave;
     
     cout << "Informe o valor para pesquisar: ";
     cin >> chave;
@@ -107,9 +107,8 @@ void pilha::pesquisarValor(){
     p = this->topo;
     
     for(this->aux = this->topo; this->aux != NULL; this->aux = this->aux->ant){
-        contador++;
         if(chave == this->aux->valor){
-            cout << "Valor encontrado na posicao: " << contador << endl;
+            cout << "Valor encontrado. " << endl;
             return;
         }
     }
