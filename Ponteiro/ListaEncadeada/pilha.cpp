@@ -52,11 +52,15 @@ void pilha::menu() {
             break;
         default:
             cout << "\nOpcao Invalida." << endl;
+            this->menu();
     }
 }
 
 bool pilha::vazio(no *structRecebido){
-    return structRecebido == NULL;
+    if(structRecebido == NULL)
+        return true;
+    else
+        return false;
 }
 
 void pilha::inserirValor() {
@@ -90,12 +94,6 @@ void pilha::mostrarValores() {
     }
     
     cout << p->valor << endl;
-
-    //testar em casa
-    //while(aux!=NULL){
-    //cout << aux -> valor;
-    //aux = aut -> ant;
-    //}
 
 void pilha::pesquisarValor(){
     int chave;
