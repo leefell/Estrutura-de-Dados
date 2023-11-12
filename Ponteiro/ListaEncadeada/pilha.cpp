@@ -97,19 +97,14 @@ void pilha::mostrarValores() {
 
 void pilha::pesquisarValor(){
     int chave;
-    
-    cout << "Informe o valor para pesquisar: ";
+    cout << "Digite um valor para verificar se esta empilhado: ";
     cin >> chave;
-    
-    no *p;
-    p = this->topo;
-    
-    for(this->aux = this->topo; this->aux != NULL; this->aux = this->aux->ant){
-        if(chave == this->aux->valor){
-            cout << "Valor encontrado. " << endl;
-            return;
+
+    for (this->aux = this->topo; this->aux != NULL; this->aux = this->aux->ant) {
+        if (chave == this->aux->valor) {
+            cout << "Valor esta empilhado." << endl;
+        } else {
+            cout << "Valor nao esta empilhado." << endl;
         }
     }
-    
-    cout << "Valor nao encontrado." << endl;
 }
