@@ -51,7 +51,8 @@ void fila::menu(){
             cout << "\nSaindo." << endl;
             break;
         default:
-            cout << "\nOpcao Invalida." << endl;
+            cout << "\nOpcao Invalida. Insira outra: " << endl;
+            this->menu();
     }
 }
 
