@@ -110,8 +110,10 @@ void pilha::pesquisar() {
     for (aux = topo; aux != NULL; aux = aux->ant) {
         if (chave == this->aux->valor) {
             cout << "Valor esta empilhado." << endl;
-        } else {
-            cout << "Valor nao esta empilhado." << endl;
-        }
+            return;
+        } 
+        
     }
+    
+    cout << "Valor nao esta empilhado. " << endl;
 }
