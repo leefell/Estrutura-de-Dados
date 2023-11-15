@@ -2,25 +2,28 @@
 #define PILHA_H
 
 struct no{
-        int valor;
-       struct no *ant;
+    
+    int valor;
+    struct no *ant;
+    
 };
-//se declarado dentro da classe, na hora de retornar ponteiro, ela vai dar erro
+
 class pilha {
 public:
     
-    no *topo, *aux;
+    no *aux;
+    no *topo;
     
     pilha();
     pilha(const pilha& orig);
     virtual ~pilha();
     
-    void mostrarValores();
-    void pesquisarValor();
-    void removerValor();
-    void inserirValor();
     void menu();
-    bool vazio(struct no *structRecebido);
+    void empilhar();
+    bool vazio(struct no *recebido);
+    void desempilhar();
+    void mostrar();
+    void pesquisar();
     
 private:
 
