@@ -111,9 +111,7 @@ void pilha::pesquisar() {
         if (chave == this->aux->valor) {
             cout << "Valor esta empilhado." << endl;
             return;
-        } 
-        
+        }     
     }
-    
-    cout << "Valor nao esta empilhado. " << endl;
+   cout << "Valor nao esta empilhado. " << endl;
 }
