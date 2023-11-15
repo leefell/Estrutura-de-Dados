@@ -15,8 +15,6 @@ fila::fila(const fila& orig) {
 fila::~fila() {
 }
 
-
-
 void fila::menu(){
     
     int opc;
@@ -36,14 +34,14 @@ void fila::menu(){
             this->menu();
             break;
         case 2:
-            this->removerValor();            
+            this->removerValor();
             this->menu();
             break;
         case 3:
             this->mostrarValores();
             this->menu();
             break;
-        case 4:
+        case 4: 
             this->pesquisarValor();
             this->menu();
             break;
@@ -51,7 +49,7 @@ void fila::menu(){
             cout << "\nSaindo." << endl;
             break;
         default:
-            cout << "\nOpcao Invalida. Insira outra: " << endl;
+            cout << "\nOpcao Invalida. Tente novamente: " << endl;
             this->menu();
     }
 }
@@ -64,9 +62,7 @@ void fila::inserirValor(){
     cout << "Digite o valor a ser inserido: ";
     this->aux = (struct no*)malloc(sizeof(aux)); // essa é a estrutura do malloc
     cin >> this->aux->valor;
-
-    // malloc reserva um espaço na memoria
-    // Na primeira inserção o malloc sempre entra no if, pq o inicio é vazio
+    
     // o segundo elemento ja nao entra no if pq o inicio nao vai ser null
     if(this->inicio == NULL){
         this->inicio = this->aux;
@@ -79,25 +75,23 @@ void fila::inserirValor(){
     
 }
 
-
-bool fila::vazio(struct no *structRecebido) {
-
-    if (structRecebido == NULL)
+bool fila::vazio(struct no *structRecebido){
+    
+    if(structRecebido == NULL)
         return false;
     else
         return true;
 }
 
-                                            
 void fila::removerValor(){
     
     if(vazio(this->inicio)){
         this->aux = this->inicio;
-        this->inicio = this->aux->prox;
-        free(this->aux);  // sem o free, o espaço da memória não será desalocado
-        cout << "Removido com sucesso.\n";
+        this->inicio = this->inicio->prox;
+        free(this->aux);
+        cout << "Removido com Sucesso.\n";
         
-    }  
+    }
 }
 
 void fila::mostrarValores(){
@@ -109,7 +103,6 @@ void fila::mostrarValores(){
 }
 
 void fila::pesquisarValor(){
-    
     int chave;
     
     cout << "\nDigite um numero para verificar se esta na fila: ";
@@ -117,7 +110,7 @@ void fila::pesquisarValor(){
     
     for(this->aux = this->inicio; this->aux != NULL; this->aux = this->aux->prox){
         if(chave == this->aux->valor){
-            cout << "Número encontrado na fila." << endl;
+            cout << "Número encontrando na fila." << endl;
         }
-    }  
+    }
 }
