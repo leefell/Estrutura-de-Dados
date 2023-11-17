@@ -111,6 +111,8 @@ void fila::pesquisarValor(){
     for(this->aux = this->inicio; this->aux != NULL; this->aux = this->aux->prox){
         if(chave == this->aux->valor){
             cout << "Número encontrando na fila." << endl;
+            return;
         }
     }
+    cout << "Numero nao esta na fila." << endl;
 }
