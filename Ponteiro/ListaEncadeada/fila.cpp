@@ -54,25 +54,40 @@ void fila::menu(){
     }
 }
 
+bool fila::jaInserido(int n) {
+
+    for (this->aux = this->inicio; this->aux != NULL; this->aux = this->aux->prox) {
+        if (this->aux->valor == n){
+            return true;
+        }
+    }
+    return false;
+}
+
 void fila::inserirValor(){
     
     // First in, first out, o primeiro que entra é o primeiro que sai
     // Ponteiro recebe null, nao ZERO, 
     
+    int num;
     cout << "Digite o valor a ser inserido: ";
-    this->aux = (struct no*)malloc(sizeof(aux)); // essa é a estrutura do malloc
-    cin >> this->aux->valor;
-    
-    // o segundo elemento ja nao entra no if pq o inicio nao vai ser null
-    if(this->inicio == NULL){
-        this->inicio = this->aux;
-    }else{
-        this->fim->prox = aux;
+    cin >> num;
+
+    if (this->jaInserido(num)) {
+        cout << "O elemento ja esta inserido na fila." << endl;
+    } else {
+        this->aux = (struct no*) malloc(sizeof (aux));
+        this->aux->valor = num;
+        
+        if (this->inicio == NULL) {
+            this->inicio = this->aux;
+        } else {
+            this->fim->prox = aux;
+        }
+        
+       this->fim = this->aux;
+       this->fim->prox = NULL;   
     }
-    
-    this->fim = this->aux;
-    this->fim->prox = NULL;
-    
 }
 
 bool fila::vazio(struct no *structRecebido){
@@ -111,7 +126,7 @@ void fila::pesquisarValor(){
     for(this->aux = this->inicio; this->aux != NULL; this->aux = this->aux->prox){
         if(chave == this->aux->valor){
             cout << "Número encontrando na fila." << endl;
-            return;
+            return; // early return
         }
     }
     cout << "Numero nao esta na fila." << endl;
