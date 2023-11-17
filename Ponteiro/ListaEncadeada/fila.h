@@ -21,7 +21,8 @@ public:
     fila();
     fila(const fila& orig);
     virtual ~fila();
-    
+
+    bool jaInserido(int n);
     void mostrarValores();
     void pesquisarValor();
     void removerValor();
