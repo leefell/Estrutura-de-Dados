@@ -77,6 +77,7 @@ void fila::inserirValor(){
         cout << "O elemento ja esta inserido na fila." << endl;
     } else {
         this->aux = (struct no*) malloc(sizeof (aux));
+        this->aux->prox = NULL; // nao pegar lixo de memoria
         this->aux->valor = num;
         
         if (this->inicio == NULL) {
