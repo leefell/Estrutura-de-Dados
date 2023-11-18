@@ -158,7 +158,7 @@ void pilha::retornarElementoMeio() {
     // Encontrar o elemento do meio
     while (this->vazio(this->aux)) {
         if (j == meio) {
-            cout << "\nValor do meio da fila: " << this->aux->valor;
+            cout << "\nValor do meio da pilha: " << this->aux->valor;
             return;
         }
 
@@ -188,7 +188,7 @@ no* pilha::retornarEnderecoElementoMeio() {
     // Encontrar o elemento do meio
     while (this->vazio(this->aux)) {
         if (j == meio) {
-            cout << "\nEndereco do elemento do meio da fila: " << this->aux;
+            cout << "\nEndereco do elemento do meio da pilha: " << this->aux;
             return this->aux;
         }
 
