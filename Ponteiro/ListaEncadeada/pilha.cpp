@@ -65,18 +65,33 @@ void pilha::menu() {
 
 }
 
+bool pilha::jaInserido(int n) {
+
+    for (this->aux = this->topo; this->aux != NULL; this->aux = this->aux->ant){
+        if(this->aux->valor == n){
+            return true;
+        }
+    }
+    return false;
+}
+
 void pilha::empilhar() {
 
     int x;
 
     cout << "Digite o valor para empilhar: ";
-    aux = (struct no*) malloc(sizeof (aux));
     cin >> x;
 
-    this->aux->valor = x;
-    this->aux->ant = this->topo;
-    this->topo = this->aux;
-
+    if(this->jaInserido(x)){
+        cout << "O elemento ja esta empilhado." << endl;
+    }else{
+        this->aux = (struct no*) malloc(sizeof (aux));
+        this->aux->ant = NULL; // nao pegar sujeira
+        this->aux->valor = x;
+        this->aux->ant = topo;
+        this->topo = this->aux;
+        cout << "Elemento empilhado." << endl;
+    }
 }
 
 bool pilha::vazio(struct no *recebido) {
@@ -152,11 +167,11 @@ void pilha::retornarElementoMeio() {
     }
 }
 
-no* pilha::retornarEnderecoElementoMeio(){
-    
+no* pilha::retornarEnderecoElementoMeio() {
+
     //A unica diferença entre o metodo retornarElementoMeio() e o retornarEnderecoElementoMeio()
     //é que inves de this->aux->valor é this->aux, entao ele vai retornar o endereço de aux        
-    
+
     int i = 0;
 
     // Contar o número de elementos na pilha
