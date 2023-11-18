@@ -24,6 +24,8 @@ public:
     void desempilhar();
     void mostrar();
     void pesquisar();
+    void retornarElementoMeio();
+    no* retornarEnderecoElementoMeio();
     
 private:
 
