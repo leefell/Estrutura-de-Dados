@@ -27,6 +27,8 @@ public:
     void pesquisar();
     void retornarElementoMeio();
     no* retornarEnderecoElementoMeio();
+    int tamanhoPilha();
+    void apagarPilha();
     
 private:
 
