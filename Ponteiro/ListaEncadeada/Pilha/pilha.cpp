@@ -25,6 +25,8 @@ void pilha::menu() {
     cout << "[4] - Pesquisar valor na pilha " << endl;
     cout << "[5] - Retornar elemento do meio" << endl;
     cout << "[6] - Retornar endereco do elemento do meio" << endl;
+    cout << "[7] - Retonar tamanho da pilha" << endl;
+    cout << "[8] - Apagar pilha" << endl;
     cout << "[0] - Sair" << endl;
     cout << "============================" << endl;
     cout << "Opcao: ";
@@ -55,6 +57,14 @@ void pilha::menu() {
             this->retornarEnderecoElementoMeio();
             this->menu();
             break;
+        case 7:
+            cout << "Tamanho da pilha: " << this->tamanhoPilha() << endl;
+            this->menu();
+            break;
+        case 8:
+            this->apagarPilha();
+            this->menu();
+            break;
         case 0:
             cout << "Saindo." << endl;
             break;
@@ -67,8 +77,8 @@ void pilha::menu() {
 
 bool pilha::jaInserido(int n) {
 
-    for (this->aux = this->topo; this->aux != NULL; this->aux = this->aux->ant){
-        if(this->aux->valor == n){
+    for (this->aux = this->topo; this->aux != NULL; this->aux = this->aux->ant) {
+        if (this->aux->valor == n) {
             return true;
         }
     }
@@ -82,9 +92,9 @@ void pilha::empilhar() {
     cout << "Digite o valor para empilhar: ";
     cin >> x;
 
-    if(this->jaInserido(x)){
+    if (this->jaInserido(x)) {
         cout << "O elemento ja esta empilhado." << endl;
-    }else{
+    } else {
         this->aux = (struct no*) malloc(sizeof (aux));
         this->aux->ant = NULL; // nao pegar sujeira
         this->aux->valor = x;
@@ -115,14 +125,18 @@ void pilha::desempilhar() {
 
 void pilha::mostrar() {
 
-    no *p;
-    p = this->topo;
-    while (vazio(p->ant)) {
-        cout << p -> valor << endl;
-        p = p->ant;
-    }
+    if (this->topo != NULL) {
+        no *p;
+        p = this->topo;
+        while (vazio(p->ant)) {
+            cout << p -> valor << endl;
+            p = p->ant;
+        }
 
-    cout << p->valor << endl;
+        cout << p->valor << endl;
+    }else{
+        cout << "\nNao ha nenhum elemento empilhado." << endl;
+    }
 }
 
 void pilha::pesquisar() {
@@ -158,7 +172,7 @@ void pilha::retornarElementoMeio() {
     // Encontrar o elemento do meio
     while (this->vazio(this->aux)) {
         if (j == meio) {
-            cout << "\nValor do meio da pilha: " << this->aux->valor;
+            cout << "\nValor do meio da fila: " << this->aux->valor;
             return;
         }
 
@@ -188,11 +202,31 @@ no* pilha::retornarEnderecoElementoMeio() {
     // Encontrar o elemento do meio
     while (this->vazio(this->aux)) {
         if (j == meio) {
-            cout << "\nEndereco do elemento do meio da pilha: " << this->aux;
+            cout << "\nEndereco do elemento do meio da fila: " << this->aux;
             return this->aux;
         }
 
         j++;
         this->aux = this->aux->ant;
     }
+}
+
+int pilha::tamanhoPilha() {
+
+    int tamanho = 0;
+    for (this->aux = this->topo; this->aux != NULL; this->aux = this->aux->ant) {
+        tamanho++;
+    }
+    return tamanho;
+}
+
+void pilha::apagarPilha() {
+
+    while (vazio(this->topo)) {
+        this->aux = this->topo;
+        this->topo = this->topo->ant;
+        free(this->aux);
+    }
+    this->topo = NULL;
+    cout << "\nPilha limpa." << endl;
 }
