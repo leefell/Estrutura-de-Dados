@@ -26,6 +26,8 @@ void fila::menu() {
     cout << "[4] - Pesquisar valor da fila " << endl;
     cout << "[5] - Retornar valor do meio da fila " << endl;
     cout << "[6] - Retornar Endereco do valor do meio da fila " << endl;
+    cout << "[7] - Retornar tamanho da fila " << endl;
+    cout << "[8] - Apagar fila " << endl;
     cout << "[0] - Sair" << endl;
     cout << "============================" << endl;
     cout << "Opcao: ";
@@ -54,6 +56,14 @@ void fila::menu() {
             break;
         case 6:
             this->retornarEnderecoMeioFila();
+            this->menu();
+            break;
+        case 7:
+            cout << "Tamanho da fila: " << this->tamanhoFila() << endl;
+            this->menu();
+            break;
+        case 8:
+            this->apagarFila();
             this->menu();
             break;
         case 0:
@@ -123,10 +133,14 @@ void fila::removerValor() {
 
 void fila::mostrarValores() {
 
-    cout << "\nOS valores da fila sao: " << endl;
-    for (this->aux = this->inicio; this->aux != NULL; this->aux = this->aux->prox) {
+    if(this->inicio != NULL){
+        cout << "\nOS valores da fila sao: " << endl;
+        for (this->aux = this->inicio; this->aux != NULL; this->aux = this->aux->prox) {
         cout << this->aux->valor << " ";
-    }
+        }
+    }else{
+        cout << "A fila esta vazia." << endl;
+  }  
 }
 
 void fila::pesquisarValor(){
@@ -186,4 +200,24 @@ no* fila::retornarEnderecoMeioFila(){
         j++;
         this->aux = this->aux->prox;
     }
+}
+
+int fila::tamanhoFila(){
+    
+    int tamanho = 0;
+    for(this->aux = this->inicio; this->aux != NULL; this->aux = this->aux->prox){
+        tamanho++;
+    }
+    return tamanho;
+}
+
+void fila::apagarFila(){
+    
+    while(vazio(this->inicio)){
+        this->aux = this->inicio;
+        this->inicio = this->inicio->prox;
+        free(this->aux);
+    }
+    this->fim = NULL;
+    cout << "\nFila limpa" << endl;
 }
