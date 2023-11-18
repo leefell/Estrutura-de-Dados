@@ -29,6 +29,8 @@ public:
     bool vazio(struct no *structRecebido);
     void retornarMeioFila();
     no* retornarEnderecoMeioFila();
+    int tamanhoFila();
+    void apagarFila();
     
 private:
 
