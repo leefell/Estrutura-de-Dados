@@ -23,6 +23,8 @@ void pilha::menu() {
     cout << "[2] - Desempilhar" << endl;
     cout << "[3] - Mostrar valores da pilha " << endl;
     cout << "[4] - Pesquisar valor na pilha " << endl;
+    cout << "[5] - Retornar elemento do meio" << endl;
+    cout << "[6] - Retornar endereco do elemento do meio" << endl;
     cout << "[0] - Sair" << endl;
     cout << "============================" << endl;
     cout << "Opcao: ";
@@ -43,6 +45,14 @@ void pilha::menu() {
             break;
         case 4:
             this->pesquisar();
+            this->menu();
+            break;
+        case 5:
+            this->retornarElementoMeio();
+            this->menu();
+            break;
+        case 6:
+            this->retornarEnderecoElementoMeio();
             this->menu();
             break;
         case 0:
@@ -72,15 +82,15 @@ void pilha::empilhar() {
 bool pilha::vazio(struct no *recebido) {
 
     if (recebido == NULL)
-        return true;
-    else
         return false;
+    else
+        return true;
 
 }
 
 void pilha::desempilhar() {
 
-    if (!vazio(this->topo)) {
+    if (vazio(this->topo)) {
         this->aux = this->topo;
         this->topo = this->topo->ant;
         cout << "\nO elemento desempilhado foi: " << this->aux->valor << endl;
@@ -92,7 +102,7 @@ void pilha::mostrar() {
 
     no *p;
     p = this->topo;
-    while (!vazio(p->ant)) {
+    while (vazio(p->ant)) {
         cout << p -> valor << endl;
         p = p->ant;
     }
@@ -111,7 +121,63 @@ void pilha::pesquisar() {
         if (chave == this->aux->valor) {
             cout << "Valor esta empilhado." << endl;
             return;
-        }     
+        }
     }
-   cout << "Valor nao esta empilhado. " << endl;
+    cout << "Valor nao esta empilhado. " << endl;
+}
+
+void pilha::retornarElementoMeio() {
+    int i = 0;
+
+    // Contar o número de elementos na pilha
+    for (this->aux = this->topo; this->aux != NULL; this->aux = this->aux->ant) {
+        i++;
+    }
+
+    int meio = i / 2;
+    int j = 0;
+
+    // Resetar aux para o topo da pilha
+    this->aux = this->topo;
+
+    // Encontrar o elemento do meio
+    while (this->vazio(this->aux)) {
+        if (j == meio) {
+            cout << "\nValor do meio da fila: " << this->aux->valor;
+            return;
+        }
+
+        j++;
+        this->aux = this->aux->ant;
+    }
+}
+
+no* pilha::retornarEnderecoElementoMeio(){
+    
+    //A unica diferença entre o metodo retornarElementoMeio() e o retornarEnderecoElementoMeio()
+    //é que inves de this->aux->valor é this->aux, entao ele vai retornar o endereço de aux        
+    
+    int i = 0;
+
+    // Contar o número de elementos na pilha
+    for (this->aux = this->topo; this->aux != NULL; this->aux = this->aux->ant) {
+        i++;
+    }
+
+    int meio = i / 2;
+    int j = 0;
+
+    // Resetar aux para o topo da pilha
+    this->aux = this->topo;
+
+    // Encontrar o elemento do meio
+    while (this->vazio(this->aux)) {
+        if (j == meio) {
+            cout << "\nEndereco do elemento do meio da fila: " << this->aux;
+            return this->aux;
+        }
+
+        j++;
+        this->aux = this->aux->ant;
+    }
 }
