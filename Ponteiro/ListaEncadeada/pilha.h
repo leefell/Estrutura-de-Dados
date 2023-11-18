@@ -20,6 +20,7 @@ public:
     
     void menu();
     void empilhar();
+    bool jaInserido(int n);
     bool vazio(struct no *recebido);
     void desempilhar();
     void mostrar();
