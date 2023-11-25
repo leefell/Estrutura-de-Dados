@@ -88,26 +88,31 @@ no* Duplamente::pesquisar(int chave) {
 
 }
 
-void Duplamente::remover(){
-    
+void duplamente::remover() {
+
     int elemento;
-    cout << "Digite o elemento que deseja remover: ";
+    cout << "Digite o elemento a ser removido: ";
     cin >> elemento;
-    
-    aux = this->pesquisar(elemento);
-    if(this->aux == this->inicio){
-        this->inicio = this->inicio->prox;
-        this->inicio->ant = NULL;
-    }else if(this->aux == this->fim){
-        this->fim = this->fim->ant;
-        this->fim->prox = NULL;
+
+    if (this->jaInserido(elemento)) {
+        aux = this->pesquisar(elemento);
+        if (this->aux == this->inicio) {
+            this->inicio = this->inicio->prox;
+            this->inicio->ant = NULL;
+        } else if (this->aux == this->fim) {
+            this->fim = this->fim->ant;
+            this->fim->prox = NULL;
+        } else {
+            this->aux->ant->prox = this->aux->prox;
+            this->aux->prox->ant = this->aux->ant;
+        }
+
+        cout << "O elemento " << this->aux->valor << " foi removido da lista." << endl;
+        free(this->aux);
     }else{
-        aux->ant->prox = aux->prox;
-        aux->prox->ant = aux->ant;
+        cout << "O elemento não está na lista." << endl;
     }
-    
-    cout << "O elemento " << this->aux->valor << " foi removido" << endl;
-    free(this->aux);
+
 }
 
 //---------------------------------------------------------------------------------------
