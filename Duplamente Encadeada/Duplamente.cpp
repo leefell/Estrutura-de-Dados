@@ -20,9 +20,9 @@ void Duplamente::menu() {
 
     int opc;
     cout << "\n=========== MENU =========== " << endl;
-    cout << "[1] - Inserir valor à fila " << endl;
-    cout << "[2] - Remover valor da fila " << endl;
-    cout << "[3] - Mostrar valores da fila " << endl;
+    cout << "[1] - Inserir valor à lista " << endl;
+    cout << "[2] - Remover valor da lista " << endl;
+    cout << "[3] - Mostrar valores da lista " << endl;
     cout << "[0] - Sair " << endl;
     cout << "============================" << endl;
     cout << "Opcao: ";
