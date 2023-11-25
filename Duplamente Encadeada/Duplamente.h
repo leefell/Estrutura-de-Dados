@@ -18,7 +18,8 @@ public:
     Duplamente();
     Duplamente(const Duplamente& orig);
     virtual ~Duplamente();
-    
+
+    bool jaInserido(int n);
     void menu();
     void inserir();
     void remover();
@@ -29,6 +30,4 @@ public:
 private:
 
 };
-
 #endif /* DUPLAMENTE_H */
-
