@@ -50,27 +50,27 @@ void Duplamente::menu() {
 
 void Duplamente::inserir() {
 
-    int numero;
-    cout << "Digite o elemento para inserir: ";
-    cin >> numero;
+    int elemento;
+    cout << "Digite o elemento à ser inserido: ";
+    cin >> elemento;
 
-    this->aux = (struct no*) malloc(sizeof (aux));
-    this->aux->prox = NULL;
-    this->aux->ant = NULL;
-    this->aux->valor = numero;
-
-    if (this->inicio == NULL) {
-        this->inicio = this->aux;
-        this->inicio->prox = NULL;
+    if (this->jaInserido(elemento)) {
+        cout << "O elemento ja esta presente na lista." << endl;
     } else {
-        this->fim->prox = aux;
-        this->aux->ant = fim;
+        this->aux = (struct no*) malloc(sizeof (aux));
+        this->aux->valor = elemento;
+        this->aux->ant = NULL;
+        this->aux->prox = NULL;
+
+        if (this->inicio == NULL) {
+            this->inicio = this->aux;
+            this->inicio->prox = NULL; // Como é a primeira insert, ele nao tem um prox.
+        } else {
+            this->fim->prox = this->aux;
+            this->aux->ant = fim;
+        }
+        this->fim = aux;
     }
-
-    this->fim = aux;
-    //this->inicio->ant = fim; // circular
-    //this->fim->prox = inicio; // circular
-
 }
 
 
@@ -117,4 +117,14 @@ void Duplamente::mostrar() {
     for (aux = inicio; aux != NULL; this->aux = this->aux->prox) {
         cout << this->aux->valor << " ";
     }
+}
+
+bool Duplamente::jaInserido(int n) {
+
+    for (this->aux = this->inicio; this->aux != NULL; this->aux = this->aux->prox) {
+        if (this->aux->valor == n) {
+            return true;
+        }
+    }
+    return false;
 }
