@@ -24,6 +24,9 @@ void cfila::menu() {
     cout << "[2] - Remover valor da fila " << endl;
     cout << "[3] - Mostrar valores da fila " << endl;
     cout << "[4] - Pesquisar valor da fila " << endl;
+    cout << "[5] - Retornar Elemento meio " << endl;
+    cout << "[6] - Retornar Endereco do elemento meio " << endl;
+    cout << "[0] - Sair" << endl;
     cout << "============================" << endl;
     cout << "Opcao: ";
     cin >> opc;
@@ -43,6 +46,14 @@ void cfila::menu() {
             break;
         case 4:
             this->pesquisar();
+            this->menu();
+            break;
+        case 5:
+            cout << this->retornarElementoMeio();
+            this->menu();
+            break;
+        case 6:
+            cout << this->retornarEnderecoMeio();
             this->menu();
             break;
         case 0:
@@ -118,4 +129,44 @@ bool cfila::verificar(int elemento) {
         }
     }
     return false;
+}
+
+int cfila::calcularMeio() {
+
+    int tamanho = 0, meio = 0;
+    for (this->aux = this->inicio; this->aux != NULL; this->aux = this->aux->prox) {
+        tamanho++;
+    }
+
+    meio = tamanho / 2;
+
+    return meio;
+}
+
+int cfila::retornarElementoMeio() {
+
+    int meio = this->calcularMeio();
+    int contador = 0;
+
+    for (this->aux = this->inicio; this->aux != NULL; this->aux = this->aux->prox) {
+        if (contador == meio) {
+            return this->aux->valor;
+        } else {
+            contador++;
+        }
+    }
+}
+
+no* cfila::retornarEnderecoMeio() {
+
+    int meio = this->calcularMeio();
+    int contador = 0;
+
+    for (this->aux = this->inicio; this->aux != NULL; this->aux = this->aux->prox) {
+        if (contador == meio) {
+            return this->aux;
+        } else {
+            contador++;
+        }
+    }
 }
