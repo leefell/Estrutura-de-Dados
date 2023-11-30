@@ -1,12 +1,16 @@
-#include "pilha.h"
+#include "cPilha.h"
 #include <cstdlib>
-#include <iostream>
+
 using namespace std;
 
+/*
+ * 
+ */
 int main(int argc, char** argv) {
 
-    pilha obj;
+    cPilha obj;
     obj.menu();
-       
+    
     return 0;
 }
+
