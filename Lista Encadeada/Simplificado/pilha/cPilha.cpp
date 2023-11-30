@@ -23,6 +23,8 @@ void cPilha::menu(){
     cout << "[2] - Desempilhar" << endl;
     cout << "[3] - Mostrar valores da pilha " << endl;
     cout << "[4] - Pesquisar valor na pilha " << endl;
+    cout << "[5] - Retonar Elemento Meio" << endl;    
+    cout << "[6] - Retonar Endereço Elemento Meio" << endl;    
     cout << "[0] - Sair" << endl;
     cout << "============================" << endl;
     cout << "Opcao: ";
@@ -43,6 +45,14 @@ void cPilha::menu(){
             break;
         case 4:
             this->pesquisar();
+            this->menu();
+            break;
+        case 5:
+            cout << this->retonarElementoMeio();
+            this->menu();
+            break;
+        case 6:
+            cout << this->retornarEnderecoMeio();
             this->menu();
             break;
         case 0:
@@ -120,4 +130,45 @@ void cPilha::pesquisar() {
     }
 
     cout << "O elemento não está empilhado." << endl;
+}
+
+int cPilha::calcularMeio(){
+    
+    int tamanho = 0, meio = 0;
+    for(this->aux = this->topo; this->aux != NULL; this->aux = this->aux->ant){
+        tamanho++;
+    }
+    
+    meio = tamanho/2;
+    
+    return meio;
+    
+}
+
+int cPilha::retonarElementoMeio(){
+    
+    int meio = this->calcularMeio();
+    int contador = 0;
+    
+    for(this->aux = this->topo; this->aux != NULL; this->aux = this->aux->ant){
+        if(contador == meio){
+            return this->aux->valor;
+        }else{
+            contador++;
+        }
+    }
+}
+
+no* cPilha::retornarEnderecoMeio(){
+    
+    int meio = this->calcularMeio();
+    int contador = 0;
+    
+    for(this->aux = this->topo; this->aux != NULL; this->aux = this->aux->ant){
+        if(contador == meio){
+            return this->aux;
+        }else{
+            contador++;
+        }
+    }
 }
