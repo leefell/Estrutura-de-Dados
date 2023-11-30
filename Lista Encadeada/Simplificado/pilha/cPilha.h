@@ -23,6 +23,9 @@ public:
     void mostrar();
     void pesquisar();
     bool jaInserido(int n);
+    int calcularMeio();
+    int retonarElementoMeio();
+    no* retornarEnderecoMeio();
     
 private:
 
