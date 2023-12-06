@@ -65,3 +65,10 @@ void cCircular::inserir(){
     this->inicio->ant = fim;
     this->fim->prox = inicio;
 }
+
+void cCircular::listar(){
+    
+    for(this->aux = this->inicio; this->aux != fim; this->aux = this->aux->prox){
+        cout << this->aux->valor << " ";
+    }
+}
