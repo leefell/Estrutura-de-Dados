@@ -1,33 +1,34 @@
 #ifndef DUPLAMENTE_H
 #define DUPLAMENTE_H
 
-//deque
-
 struct no{
     
     int valor;
-    struct no *prox, *ant;
+    struct no *ant, *prox;
     
 };
 
-class Duplamente {
+class duplamente {
 public:
+    duplamente();
+    duplamente(const duplamente& orig);
+    virtual ~duplamente();
     
     no *aux, *inicio, *fim;
     
-    Duplamente();
-    Duplamente(const Duplamente& orig);
-    virtual ~Duplamente();
-
     bool jaInserido(int n);
     void menu();
     void inserir();
     void remover();
     void mostrar();
-    no* pesquisar(int chave);
-    
+    no* pesquisar(int valor);
+    int calcularMeio();
+    int retornarElementoMeio();
+    no* retornarEnderecoMeio();
     
 private:
-
+    
 };
+
 #endif /* DUPLAMENTE_H */
+
