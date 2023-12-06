@@ -18,8 +18,7 @@ void circular::menu(){
     int opc;
     cout << "\n=========== MENU =========== " << endl;
     cout << "[1] - Inserir valor à lista " << endl;
-    cout << "[2] - Remover valor da lista"
-    cout << "[3] - Mostrar valores da lista " << endl;
+    cout << "[2] - Mostrar valores da lista " << endl;
     cout << "[0] - Sair " << endl;
     cout << "============================" << endl;
     cout << "Opcao: ";
@@ -32,12 +31,9 @@ void circular::menu(){
             this->menu();
             break;
         case 2:
-            this->remover();
-            this->menu();
-            break;
-        case 3:
             this->mostrar();
             this->menu();
+            break;
         case 0:
             cout << "Saindo" << endl;
             break;
@@ -61,7 +57,8 @@ void circular::inserir(){
         this->fim->prox = this->aux;
         this->aux->ant = this->fim;
     }
-    
+
+    // Inicio.ant aponta pro fim e fim.prox aponta pro inicio
     this->fim = this->aux;
     this->inicio->ant = this->fim;
     this->fim->prox = inicio;
@@ -69,17 +66,7 @@ void circular::inserir(){
 
 void circular::mostrar(){
     
-    for(this->aux = this->inicio; this->aux != NULL; this->aux = this->aux->prox){
+    for(this->aux = this->inicio; this->aux != fim; this->aux = this->aux->prox){
         cout << this->aux->valor << " ";
     }
-}
-
-void circular::remover(){
-    
-    int elemento;
-    cout << "Digite o elemento a remover: ";
-    cin >> elemento;
-   
-    this->aux->prox = NULL;
-    this->aux->prox = NULL;
 }
