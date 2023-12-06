@@ -1,28 +1,30 @@
-#include "Duplamente.h"
 #include <iostream>
+#include "duplamente.h"
 using namespace std;
 
-Duplamente::Duplamente() {
+duplamente::duplamente() {
 
-    inicio = NULL;
-    fim = NULL;
-    aux = NULL;
+    this->aux = NULL;
+    this->inicio = NULL;
+    this->fim = NULL;
 
 }
 
-Duplamente::Duplamente(const Duplamente& orig) {
+duplamente::duplamente(const duplamente& orig) {
 }
 
-Duplamente::~Duplamente() {
+duplamente::~duplamente() {
 }
 
-void Duplamente::menu() {
+void duplamente::menu() {
 
     int opc;
     cout << "\n=========== MENU =========== " << endl;
     cout << "[1] - Inserir valor à lista " << endl;
     cout << "[2] - Remover valor da lista " << endl;
     cout << "[3] - Mostrar valores da lista " << endl;
+    cout << "[4] - Retornar Elemento do meio" << endl;
+    cout << "[5] - Retornar Endereço do meio" << endl;
     cout << "[0] - Sair " << endl;
     cout << "============================" << endl;
     cout << "Opcao: ";
@@ -41,14 +43,21 @@ void Duplamente::menu() {
             this->mostrar();
             this->menu();
             break;
+        case 4:
+            cout << this->retornarElementoMeio();
+            this->menu();
+            break;
+        case 5:
+            cout << this->retornarEnderecoMeio();
+            this->menu();
+            break;
         case 0:
             cout << "Saindo" << endl;
             break;
-
     }
 }
 
-void Duplamente::inserir() {
+void duplamente::inserir() {
 
     int elemento;
     cout << "Digite o elemento à ser inserido: ";
@@ -73,19 +82,14 @@ void Duplamente::inserir() {
     }
 }
 
+no* duplamente::pesquisar(int valor) {
 
-// Questao da prova -> remover um elemento qualquer do meio da lista duplamente encadeada
-//---------------------------------------------------------------------------------------
-
-no* Duplamente::pesquisar(int chave) {
-
-    for (this->aux = inicio; aux != NULL; this->aux = aux->prox) {
-        if (aux->valor == chave)
+    for (this->aux = this->inicio; this->aux != NULL; this->aux = this->aux->prox) {
+        if (this->aux->valor == valor) {
             return aux;
+        }
     }
-
     return NULL;
-
 }
 
 void duplamente::remover() {
@@ -109,22 +113,20 @@ void duplamente::remover() {
 
         cout << "O elemento " << this->aux->valor << " foi removido da lista." << endl;
         free(this->aux);
-    }else{
+    } else {
         cout << "O elemento não está na lista." << endl;
     }
 
 }
 
-//---------------------------------------------------------------------------------------
+void duplamente::mostrar() {
 
-void Duplamente::mostrar() {
-
-    for (aux = inicio; aux != NULL; this->aux = this->aux->prox) {
+    for (this->aux = this->inicio; this->aux != NULL; this->aux = this->aux->prox) {
         cout << this->aux->valor << " ";
     }
 }
 
-bool Duplamente::jaInserido(int n) {
+bool duplamente::jaInserido(int n) {
 
     for (this->aux = this->inicio; this->aux != NULL; this->aux = this->aux->prox) {
         if (this->aux->valor == n) {
@@ -132,4 +134,44 @@ bool Duplamente::jaInserido(int n) {
         }
     }
     return false;
+}
+
+int duplamente::calcularMeio() {
+
+    int tamanho = 0, meio = 0;
+    for (this->aux = this->inicio; this->aux != NULL; this->aux = this->aux->prox) {
+        tamanho++;
+    }
+
+    meio = tamanho / 2;
+
+    return meio;
+}
+
+int duplamente::retornarElementoMeio() {
+
+    int meio = this->calcularMeio();
+    int contador = 0;
+
+    for (this->aux = this->inicio; this->aux != NULL; this->aux = this->aux->prox) {
+        if (contador == meio) {
+            return this->aux->valor;
+        } else {
+            contador++;
+        }
+    }
+}
+
+no* duplamente::retornarEnderecoMeio() {
+
+    int meio = this->calcularMeio();
+    int contador = 0;
+
+    for (this->aux = this->inicio; this->aux != NULL; this->aux = this->aux->prox) {
+        if (contador == meio) {
+            return this->aux;
+        } else {
+            contador++;
+        }
+    }
 }
