@@ -1,4 +1,4 @@
-#include <iostream>
+ #include <iostream>
 using namespace std;
 
 // Para transformar uma subárvore com raiz no nó i, que é um índice em arr[]. n é o tamanho do heap
@@ -77,4 +77,4 @@ int main()
 	return 0;
 }
 // Código por Prajwal Chougale
-// source: https://www.geeksforgeeks.org/cpp-program-for-heap-sort/
+// source do codigo: https://www.geeksforgeeks.org/cpp-program-for-heap-sort/
