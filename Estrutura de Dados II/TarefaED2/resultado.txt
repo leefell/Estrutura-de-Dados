@@ -1,0 +1,12 @@
+Número de Nós: 5
+Nó Inicial: 0
+Grafo Dígrafo: 1
+Grafo Ponderado: 1
+Arestas:
+Origem: 0, Destino: 1, Peso: 3
+Origem: 0, Destino: 2, Peso: 1
+Origem: 1, Destino: 3, Peso: 1
+Origem: 1, Destino: 4, Peso: 1
+Origem: 2, Destino: 1, Peso: 1
+Origem: 2, Destino: 4, Peso: 4
+Origem: 3, Destino: 4, Peso: 1
